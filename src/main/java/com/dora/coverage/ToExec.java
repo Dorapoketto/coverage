@@ -9,6 +9,13 @@ import java.io.IOException;
 
 public class ToExec {
 
+    /**
+     * 从测试服务器中dump出覆盖率信息
+     *
+     * @param filePath exec文件路径
+     * @param address 测试服务器地址
+     * @param port 测试服务器端口
+     */
     public void dump(String filePath, String address, int port){
 
         ExecDumpClient execDumpClient = new ExecDumpClient();
@@ -21,13 +28,6 @@ public class ToExec {
         } catch (IOException e){
             e.printStackTrace();
         }
-    }
-
-
-    public static void main(String[] args){
-        ToExec toExec = new ToExec();
-
-        toExec.dump("./jacoco.exec", "10.30.30.77", 38333);
     }
 
 }
