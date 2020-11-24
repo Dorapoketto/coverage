@@ -8,6 +8,8 @@ import org.jacoco.report.DirectorySourceFileLocator;
 import org.jacoco.report.FileMultiReportOutput;
 import org.jacoco.report.IReportVisitor;
 import org.jacoco.report.html.HTMLFormatter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.IOException;
@@ -36,6 +38,7 @@ public class ToReport {
 
     private ExecFileLoader execFileLoader;
 
+    private static final Logger logger = LoggerFactory.getLogger(ToReport.class);
 
     /**
      * Create a new generator based for the given project.
