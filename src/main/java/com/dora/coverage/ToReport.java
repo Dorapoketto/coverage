@@ -16,6 +16,8 @@ import java.io.IOException;
 
 public class ToReport {
 
+    private final String title;
+
     /**
      * 覆盖率文件地址
      */
@@ -46,6 +48,7 @@ public class ToReport {
      * @param projectDirectory 项目路径
      */
     public ToReport(final File projectDirectory) {
+        this.title = projectDirectory.getName();
         this.executionDataFile = new File(projectDirectory, "jacoco.exec");
         this.classesDirectory = new File(projectDirectory, "target");
         this.sourceDirectory = new File(projectDirectory, "src");
@@ -59,8 +62,10 @@ public class ToReport {
 
         final IBundleCoverage iBundleCoverage = analyzeStructure();
 
-        iReportVisitor.visitInfo(execFileLoader.getSessionInfoStore().getInfos(),
-                execFileLoader.getExecutionDataStore().getContents());
+        iReportVisitor.visitInfo(
+                execFileLoader.getSessionInfoStore().getInfos(),
+                execFileLoader.getExecutionDataStore().getContents()
+        );
 
         iReportVisitor.visitBundle(iBundleCoverage,
                 new DirectorySourceFileLocator(sourceDirectory, "utf-8", 4));
@@ -91,6 +96,6 @@ public class ToReport {
 
         analyzer.analyzeAll(classesDirectory);
 
-        return coverageBuilder.getBundle("app-market");
+        return coverageBuilder.getBundle(title);
     }
 }
