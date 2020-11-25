@@ -51,7 +51,7 @@ public class ToReport {
         this.title = projectDirectory.getName();
         this.executionDataFile = new File(projectDirectory, "jacoco.exec");
         this.classesDirectory = new File(projectDirectory, "target");
-        this.sourceDirectory = new File(projectDirectory, "src");
+        this.sourceDirectory = new File(projectDirectory, "src/main/java");
         this.reportDirectory = new File(projectDirectory, "coveragereport");
     }
 
