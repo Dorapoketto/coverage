@@ -16,7 +16,7 @@ class ToExecTest {
     }
 
     @Test
-    void checkConnect() throws IOException {
+    void checkConnect() throws Exception {
         if (ToExec.CheckConnect("10.30.30.77", 38333)) {
             System.out.println("Successed!");
         } else {

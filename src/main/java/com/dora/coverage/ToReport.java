@@ -73,12 +73,16 @@ public class ToReport {
                 execFileLoader.getSessionInfoStore().getInfos(),
                 execFileLoader.getExecutionDataStore().getContents()
         );
+        try {
+            iReportVisitor.visitBundle(iBundleCoverage,
+                    new DirectorySourceFileLocator(sourceDirectory, "utf-8", 4));
 
-        iReportVisitor.visitBundle(iBundleCoverage,
-                new DirectorySourceFileLocator(sourceDirectory, "utf-8", 4));
+            iReportVisitor.visitEnd();
+            logger.info("测试报告生成完毕");
+        } catch (IOException e) {
+            logger.error("{}", e.getMessage());
+        }
 
-        iReportVisitor.visitEnd();
-        logger.info("测试报告生成完毕");
     }
 
 
