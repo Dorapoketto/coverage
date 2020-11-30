@@ -55,7 +55,14 @@ public class ToReport {
         this.reportDirectory = new File(projectDirectory, "coveragereport");
     }
 
+    /**
+     * 生成测试覆盖率报告
+     *
+     * @throws IOException
+     */
     public void generateReport() throws IOException {
+
+        logger.info("开始生成测试报告");
 
         final HTMLFormatter htmlFormatter = new HTMLFormatter();
         final IReportVisitor iReportVisitor = htmlFormatter.createVisitor(new FileMultiReportOutput(reportDirectory));
@@ -71,6 +78,7 @@ public class ToReport {
                 new DirectorySourceFileLocator(sourceDirectory, "utf-8", 4));
 
         iReportVisitor.visitEnd();
+        logger.info("测试报告生成完毕");
     }
 
 

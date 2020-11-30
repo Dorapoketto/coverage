@@ -34,6 +34,7 @@ public class ToExec {
             execFileLoader = execDumpClient.dump(address, port);
             // 将覆盖率数据文件保存至本地
             execFileLoader.save(new File(filePath), false);
+            logger.info("数据获取成功");
         } catch (IOException e) {
             logger.warn("错误日志{}", e.getMessage());
         }
@@ -45,7 +46,7 @@ public class ToExec {
      * @return true or false
      * @throws IOException
      */
-    public static boolean CheckConnect(String address, int port) throws IOException {
+    public static boolean CheckConnect(String address, int port) throws Exception {
         try {
             ExecDumpClient dumpClient = new ExecDumpClient();
             dumpClient.dump(address, port);
